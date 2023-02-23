@@ -11,7 +11,7 @@ This is a collection of Django Model Field classes that are encrypted using [Key
 
 #### Getting Started
 ```shell
-$ pip install django-encrypted-fields
+$ pip install django-encrypted-fields-2
 ```
 Create a basic keyczar keyset. `AES-256` in this case.
 ```shell

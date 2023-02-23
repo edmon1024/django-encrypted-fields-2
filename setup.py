@@ -15,12 +15,12 @@ with open('encrypted_fields/__init__.py', 'r') as init_file:
 
 
 setup(
-    name='django-encrypted-fields',
+    name='django-encrypted-fields-2',
     description=(
         'This is a collection of Django Model Field classes '
         'that are encrypted using Keyczar.'
     ),
-    url='http://github.com/defrex/django-encrypted-fields/',
+    url='https://github.com/edmon1024/django-encrypted-fields-2',
     license='BSD',
     author='Aron Jones',
     author_email='aron.jones@gmail.com',
@@ -28,6 +28,6 @@ setup(
     version=version,
     install_requires=[
         'Django>=1.4',
-        'python-keyczar>=0.71c',
+        'python-keyczar-2>=0.717',
     ],
 )
