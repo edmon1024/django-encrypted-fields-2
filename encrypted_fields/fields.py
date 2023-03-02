@@ -1,6 +1,6 @@
 
 import os
-import types
+import binascii
 
 import django
 from django.db import models
@@ -163,7 +163,7 @@ class EncryptedFieldMixin(object):
         return self.to_python(value)
 
     def to_python(self, value):
-        if value is None or not isinstance(value, types.StringTypes):
+        if value is None or not isinstance(value, str):
             return value
 
         if self.prefix and value.startswith(self.prefix):
@@ -187,13 +187,16 @@ class EncryptedFieldMixin(object):
         if value is None or value == '' or self.decrypt_only:
             return value
 
-        if isinstance(value, types.StringTypes):
+        if isinstance(value, str):
             value = value.encode('unicode_escape')
             value = value.encode('ascii')
         else:
             value = str(value)
 
-        return self.prefix + self.crypter().encrypt(value)
+        pr = self.prefix
+        c = self.crypter().encrypt(bytes(value, 'utf-8'))
+
+        return pr + c.decode()
 
     def get_db_prep_value(self, value, connection, prepared=False):
         if not prepared:
